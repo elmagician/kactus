@@ -1,0 +1,28 @@
+send:
+  - topic: rata
+    data:
+      test: false
+      msg: "This is a funny message for fun"
+    metadata:
+      version: test
+      type: message
+  - topic: rata
+    data:
+      test: true
+      msg: "This is a cookie"
+    metadata:
+      version: test
+      type: message
+
+  - topic: something
+    data:
+      test: true
+      msg: "AvadaKadavra"
+    metadata:
+      version: test
+      type: sort
+
+
+receive: [ "touille", "magic" ]
+
+acknowledgeOnReceive: true

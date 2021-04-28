@@ -1,0 +1,6 @@
+persistent:
+  manifest: true
+  sos: _.._
+disposable:
+  value: 100.56
+  test: [ "troll", "de", "troy" ]

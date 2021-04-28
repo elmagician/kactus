@@ -1,0 +1,9 @@
+persistent:
+  test: true
+  devil: 666
+  sos: 1001
+  script: To be or not to be. That's the question.
+disposable:
+  me: George
+  sing: false
+  song: Le gorille

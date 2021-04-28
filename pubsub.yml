@@ -1,0 +1,12 @@
+topics:
+  - name: test
+  - name: something
+  - name: rata
+
+subscriptions:
+  - name: test
+    topic: test
+  - name: touille
+    topic: rata
+  - name: magic
+    topic: something

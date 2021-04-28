@@ -1,0 +1,10 @@
+variables:
+  - test/fixtures/for_tag/test_data.yml
+database:
+  - kind: postgres
+    path: test/fixtures/for_tag/test.sql
+    pickedInstanceKey: pg.database
+pubsub:
+  - kind: google
+    path: test/fixtures/for_tag/pubsub.yml
+    pickedInstanceKey: gcp.client
