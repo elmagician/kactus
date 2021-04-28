@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"github.com/cucumber/messages-go/v10"
-	"github.com/google/go-cmp/cmp"
 	"github.com/elmagician/godog"
+	"github.com/google/go-cmp/cmp"
 	"go.uber.org/zap"
 )
 

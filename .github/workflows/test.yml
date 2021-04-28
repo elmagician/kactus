@@ -1,0 +1,70 @@
+name: Tests
+on:
+  push:
+    tags:
+      - v*
+    branches:
+      - main
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+
+    services:
+      pubsub:
+        image: titouanfreville/gcp-pubsub:307-alpine
+        ports:
+          - 8085/tcp
+
+      postgres:
+        image: postgres
+        ports:
+          - 5432/tcp
+
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: root
+          POSTGRES_DB: default
+
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+
+    steps:
+      - name: Set up Go 1.16
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.16
+        id: go
+
+      - name: git checkout
+        uses: actions/checkout@v2
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Run tests
+        run: go test ./...
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: root
+          POSTGRES_DB: default
+          POSTGRES_HOST: postgres
+
+          PUBSUB_HOST: pubsub
+          PUBSUB_PORT: 8085
+
+
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: latest

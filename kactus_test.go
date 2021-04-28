@@ -3,6 +3,7 @@ package kactus_test
 import (
 	"context"
 	"database/sql"
+	"fmt"
 	"log"
 	"os"
 	"testing"
@@ -136,6 +137,12 @@ func getEnv(key, defaultVal string) string {
 }
 
 func dsn() string {
+	fmt.Println("sslmode=" + getEnv(pgSSLModeEnv, "disable") +
+		" user='" + getEnv(pgUserEnv, "root") +
+		"' password='" + getEnv(pgPasswordEnv, "root") +
+		"' host='" + getEnv(pgHostEnv, "localhost") +
+		"' port='" + getEnv(pgPortEnv, "5432") +
+		"' dbname='" + getEnv(pgDBNameEnv, "default") + "'")
 	return "sslmode=" + getEnv(pgSSLModeEnv, "disable") +
 		" user='" + getEnv(pgUserEnv, "root") +
 		"' password='" + getEnv(pgPasswordEnv, "root") +

@@ -58,7 +58,8 @@ linters-settings:
           - (github.com/golangci/golangci-lint/pkg/logutils.Log).Fatalf
 
     enable-all: true
-    disable-all: false
+    disable:
+      - fieldalignment
   golint:
     # minimal confidence for issues, default is 0.8
     min-confidence: 0.8
@@ -154,7 +155,6 @@ linters:
     - exhaustive
     - ineffassign
     - megacheck
-    - maligned
     - misspell
     - gomnd
     - gocyclo

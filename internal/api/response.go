@@ -20,10 +20,10 @@ var (
 )
 
 type Response struct {
+	Status  int
+	Headers http.Header
 	Body    []byte
 	Cookies map[string]*http.Cookie
-	Headers http.Header
-	Status  int
 }
 
 func NewResponse(status int, body []byte, cookies []*http.Cookie, headers http.Header) *Response {

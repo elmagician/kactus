@@ -7,13 +7,11 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/google/go-cmp/cmp"
 	"github.com/elmagician/godog"
-
-	match "github.com/elmagician/kactus/internal/matchers"
-
 	"github.com/elmagician/kactus/internal"
 	"github.com/elmagician/kactus/internal/interfaces"
+	match "github.com/elmagician/kactus/internal/matchers"
+	"github.com/google/go-cmp/cmp"
 )
 
 // const for godog.Table default header on assertion
