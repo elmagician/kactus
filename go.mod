@@ -19,7 +19,7 @@ require (
 	github.com/spf13/pflag v1.0.5
 	github.com/stretchr/testify v1.6.1
 	go.uber.org/zap v1.16.0
-	golang.org/x/net v0.0.0-20201010224723-4f7140c49acb
+	golang.org/x/net v0.7.0
 	google.golang.org/api v0.33.0
 	google.golang.org/grpc v1.32.0
 	gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776
