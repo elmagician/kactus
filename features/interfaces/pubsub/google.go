@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"cloud.google.com/go/pubsub"
-	"github.com/elmagician/godog"
+	"github.com/cucumber/godog"
 
 	"github.com/elmagician/kactus/features/interfaces/picker"
 	internalPicker "github.com/elmagician/kactus/internal/picker"

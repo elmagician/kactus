@@ -6,11 +6,11 @@ import (
 
 // Debug start debug logs.
 // It will be removed when calling Reset.
-func (Client) Debug() {
+func (*Client) Debug() {
 	api.Debug()
 }
 
 // DisableDebug stops debugging.
-func (Client) DisableDebug() {
+func (*Client) DisableDebug() {
 	api.ResetLog()
 }

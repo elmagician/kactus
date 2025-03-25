@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/elmagician/godog"
+	"github.com/cucumber/godog"
 	"go.uber.org/zap"
 )
 

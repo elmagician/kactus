@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/elmagician/godog"
+	"github.com/cucumber/godog"
 
 	"github.com/elmagician/kactus/internal/api"
 	match "github.com/elmagician/kactus/internal/matchers"
@@ -214,7 +214,8 @@ func (cli *Client) ResponseJSONShouldBeEquivalent(expected *godog.DocString) err
 // If fully is true, it also ensures no key exists besides provided one.
 // Keys are provided as Path using `.` separators
 // To match insides JSON Array, use Index.
-//  test.0.has matches a path inside: {"test": [{"matches": val}}
+//
+//	test.0.has matches a path inside: {"test": [{"matches": val}}
 func (cli *Client) ResponseJSONShouldContain(fully bool, matchPaths *godog.Table) error {
 	return cli.cli.Response.JSONContains(fully, matchPaths)
 }

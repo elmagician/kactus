@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/elmagician/godog"
+	"github.com/cucumber/godog"
 
 	"github.com/elmagician/kactus/features/interfaces/picker"
 	"github.com/elmagician/kactus/internal/databases/postgres"

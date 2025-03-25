@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/cucumber/messages-go/v10"
+	"github.com/cucumber/godog"
 	"go.uber.org/zap"
 	"gopkg.in/yaml.v3"
 
@@ -86,7 +86,7 @@ func (fix Fixtures) LoadFromInstance(fixturePath string, instanceKey string) err
 	}
 }
 
-func (fix Fixtures) LoadFromTags(tags []*messages.Pickle_PickleTag) error {
+func (fix Fixtures) LoadFromTags(tags []*godog.Scenario) error {
 	log.Debug("Loading from tags", zap.Reflect("tags", tags))
 
 	for _, tag := range tags {

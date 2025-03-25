@@ -4,14 +4,13 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"log"
 	"os"
 	"testing"
 
 	googlePubSub "cloud.google.com/go/pubsub"
 	"github.com/DATA-DOG/go-txdb"
-	"github.com/elmagician/godog"
-	"github.com/elmagician/godog/colors"
+	"github.com/cucumber/godog"
+	"github.com/cucumber/godog/colors"
 	_ "github.com/lib/pq"
 	"github.com/spf13/pflag"
 	"google.golang.org/api/option"
@@ -114,17 +113,17 @@ func installKactus(s *godog.TestSuiteContext) {
 	)
 	postgres.Reset()
 
-	cli, err := initPubsubClient(context.Background(), getEnv(gcpFakeProjectEnv, "test"))
-	if err != nil {
-		log.Fatal(err)
-	}
+	/*	cli, err := initPubsubClient(context.Background(), getEnv(gcpFakeProjectEnv, "test"))
+		if err != nil {
+			log.Fatal(err)
+		}
 
-	gcpClient = pubsub.NewGoogle(pickerInstance, pubsub.GoogleInfo{Client: cli, Key: "client"})
-	gcpClient.Reset()
+		gcpClient = pubsub.NewGoogle(pickerInstance, pubsub.GoogleInfo{Client: cli, Key: "client"})
+		gcpClient.Reset()*/
 
 	s.AfterSuite(func() {
 		_ = localDB.Close()
-		_ = cli.Close()
+		// _ = cli.Close()
 	})
 }
 

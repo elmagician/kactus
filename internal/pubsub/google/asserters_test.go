@@ -7,16 +7,17 @@ import (
 
 	googlePubSub "cloud.google.com/go/pubsub"
 	"cloud.google.com/go/pubsub/pstest"
+	"github.com/cucumber/godog"
 	"github.com/cucumber/messages-go/v10"
-	"github.com/elmagician/godog"
+	. "github.com/smartystreets/goconvey/convey"
+	"google.golang.org/api/option"
+	"google.golang.org/grpc"
+
 	"github.com/elmagician/kactus/internal/matchers"
 	"github.com/elmagician/kactus/internal/picker"
 	"github.com/elmagician/kactus/internal/pubsub/google"
 	. "github.com/elmagician/kactus/internal/test"
 	"github.com/elmagician/kactus/internal/types"
-	. "github.com/smartystreets/goconvey/convey"
-	"google.golang.org/api/option"
-	"google.golang.org/grpc"
 )
 
 func init() {

@@ -1,8 +1,9 @@
 package definitions
 
 import (
-	"github.com/cucumber/messages-go/v10"
-	"github.com/elmagician/godog"
+	"context"
+
+	"github.com/cucumber/godog"
 
 	"github.com/elmagician/kactus/features/interfaces/picker"
 )
@@ -12,22 +13,31 @@ import (
 // You can safely ignore return value.
 //
 // Provided steps:
-// - (?:I )?want(?:ing)? to generate uuids (.*) => generate a new uuid for each provided key
-//   I want to generate uuids bookID, userID, mouseID
-// - (?:I )?set(?:ting)? variable ([a-zA-Z0-9]*) to (.*) => store provided value under variable name
-//   I set variable X to 123i
-// - (?:I )?want to assert picked variables matches: => ensures provided key value matches condition
+//   - (?:I )?want(?:ing)? to generate uuids (.*) => generate a new uuid for each provided key
+//     I want to generate uuids bookID, userID, mouseID
+//   - (?:I )?set(?:ting)? variable ([a-zA-Z0-9]*) to (.*) => store provided value under variable name
+//     I set variable X to 123i
+//   - (?:I )?want to assert picked variables matches: => ensures provided key value matches condition
+//
 // (cf: picker.VerifiesPickedValues)
-//   I want to assert picked variables matches:
-//   | key | matcher | value         |
-//   | X   | =       | 123i((reel))  |
+//
+//	I want to assert picked variables matches:
+//	| key | matcher | value         |
+//	| X   | =       | 123i((reel))  |
 func InstallPicker(s *godog.ScenarioContext, pickerInstance *picker.Picker) {
 	pickerInstance.Reset() // nolint: errcheck
 
-	s.BeforeStep(pickerInstance.BeforeStepReplacer)
-	s.BeforeScenario(func(_ *messages.Pickle) {
+	s.StepContext().Before(func(ctx context.Context, st *godog.Step) (context.Context, error) {
+		pickerInstance.BeforeStepReplacer(st)
+
+		return ctx, nil
+	})
+
+	s.Before(func(ctx context.Context, s *godog.Scenario) (context.Context, error) {
 		// nolint: errcheck
-		pickerInstance.Reset() // error always nil
+		pickerInstance.Reset()
+
+		return ctx, nil // error always nil
 	})
 
 	// Pick UUID as id name

@@ -8,8 +8,8 @@ import (
 	"time"
 
 	fake "github.com/brianvoe/gofakeit/v5"
+	"github.com/cucumber/godog"
 	"github.com/cucumber/messages-go/v10"
-	"github.com/elmagician/godog"
 	. "github.com/smartystreets/goconvey/convey"
 
 	"github.com/elmagician/kactus/internal/api"

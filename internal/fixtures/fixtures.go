@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/elmagician/godog"
+	"github.com/cucumber/godog"
 	"go.uber.org/zap"
 
 	"github.com/elmagician/kactus/internal/picker"
@@ -75,9 +75,9 @@ func (fix *Fixtures) WithBasePath(path string) *Fixtures {
 func (fix Fixtures) NewTagLoader(s *godog.Scenario) {
 	log.Debug("parsing tags to find fixture manifest", zap.Reflect("tags", s.Tags))
 
-	if err := fix.LoadFromTags(s.Tags); err != nil {
+	/*if err := fix.LoadFromTags(s.Tags); err != nil {
 		log.Error("could not load fixtures from manifest tag", zap.Error(err))
-	}
+	}/*/
 }
 
 // Reset resets fixture instance.

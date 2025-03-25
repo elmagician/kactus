@@ -10,8 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cucumber/messages-go/v10"
-	"github.com/elmagician/godog"
+	"github.com/cucumber/godog"
 	"github.com/google/go-cmp/cmp"
 	"go.uber.org/zap"
 )
@@ -144,7 +143,7 @@ func (request RequestPreparation) ResetArguments() RequestPreparation {
 // Cookies management
 
 // nolint: gocyclo
-func (request RequestPreparation) AddCookie(key, val string, options *messages.PickleStepArgument_PickleTable) (RequestPreparation, error) {
+func (request RequestPreparation) AddCookie(key, val string, options *godog.Table) (RequestPreparation, error) {
 	var (
 		err error
 

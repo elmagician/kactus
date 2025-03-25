@@ -3,14 +3,14 @@ package picker
 import (
 	"fmt"
 
-	"github.com/cucumber/messages-go/v10"
+	"github.com/cucumber/godog"
 
 	"github.com/elmagician/kactus/features/interfaces"
 	"github.com/elmagician/kactus/internal/matchers"
 )
 
 // VerifiesPickedValues asserts variables values matches expected conditions.
-func (picker *Picker) VerifiesPickedValues(assertions *messages.PickleStepArgument_PickleTable) error {
+func (picker *Picker) VerifiesPickedValues(assertions *godog.Table) error {
 	var key, val, matcher string
 
 	head := assertions.Rows[0].Cells
@@ -45,7 +45,7 @@ func (picker *Picker) VerifiesPickedValues(assertions *messages.PickleStepArgume
 	return nil // return nil to be usable in godog Steps
 }
 
-// VerifiesPickedValues asserts variable value matches expected condition.
+// VerifiesPickedValue asserts variable value matches expected condition.
 func (picker *Picker) VerifiesPickedValue(pickedKey, matcher, expectedValue string) error {
 	actualVal, exists := picker.store.Get(pickedKey)
 	if !exists {

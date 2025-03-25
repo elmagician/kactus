@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	"cloud.google.com/go/pubsub"
-	"github.com/elmagician/godog"
+	"github.com/cucumber/godog"
 	"go.uber.org/zap"
 )
 

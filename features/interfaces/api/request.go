@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/elmagician/godog"
+	"github.com/cucumber/godog"
 
 	"github.com/elmagician/kactus/internal/api"
 )

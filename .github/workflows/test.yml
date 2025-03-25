@@ -21,14 +21,6 @@ jobs:
       PUBSUB_PORT: 8085
 
     services:
-      pubsub:
-        image: titouanfreville/gcp-pubsub:307-alpine
-        ports:
-          - 8085/tcp
-        env:
-          PUBSUB_HOST: pubsub
-          PUBSUB_PORT: 8085
-
       postgres:
         image: postgres
         ports:
@@ -49,7 +41,7 @@ jobs:
 
     steps:
       - name: git checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Download dependencies
         run: go mod download && apt update && apt install gcc
@@ -62,8 +54,6 @@ jobs:
     name: lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: golangci-lint
-        uses: golangci/golangci-lint-action@v2
-        with:
-          version: latest
+        uses: golangci/golangci-lint-action@v7

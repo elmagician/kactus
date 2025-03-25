@@ -1,14 +1,14 @@
 package picker
 
 import (
-	"github.com/cucumber/messages-go/v10"
+	"github.com/cucumber/godog"
 	"go.uber.org/zap"
 )
 
 // NewReplacer provides function to replace picked variables in
 // messages.Pickle_PickleStep Text and Arguments.
-func NewReplacer(store *Store) func(step *messages.Pickle_PickleStep) {
-	return func(step *messages.Pickle_PickleStep) {
+func NewReplacer(store *Store) func(step *godog.Step) {
+	return func(step *godog.Step) {
 		log.Debug("Replacing value in step.")
 		log.Debug("Step text: " + step.Text)
 
@@ -19,12 +19,11 @@ func NewReplacer(store *Store) func(step *messages.Pickle_PickleStep) {
 		args := step.Argument
 		if args != nil {
 			log.Debug("Step as arguments.")
+			if args.DataTable != nil {
 
-			switch argTyped := args.Message.(type) {
-			case *messages.PickleStepArgument_DataTable:
 				log.Debug(" Replacing values in data table.")
 
-				arg := argTyped.DataTable
+				arg := args.DataTable
 				for i := 0; i < len(arg.Rows); i++ {
 					for n, cell := range arg.Rows[i].Cells {
 						log.Debug(
@@ -40,16 +39,17 @@ func NewReplacer(store *Store) func(step *messages.Pickle_PickleStep) {
 						)
 					}
 				}
-			case *messages.PickleStepArgument_DocString:
-				log.Debug("Replacing values in doc string.\n" + argTyped.DocString.GetContent())
+			}
 
-				arg := argTyped.DocString
-				arg.Content = store.InjectAll(arg.GetContent())
+			if args.DocString != nil {
+				log.Debug("Replacing values in doc string.\n" + args.DocString.Content)
+
+				arg := args.DocString
+				arg.Content = store.InjectAll(args.DocString.Content)
 
 				log.Debug("Updated content.\n" + arg.Content)
-			default:
-				log.Error("unmanaged message type", zap.Reflect("arg", argTyped))
 			}
+
 		}
 	}
 }

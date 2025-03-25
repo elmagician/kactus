@@ -3,9 +3,9 @@ package picker_test
 import (
 	"testing"
 
+	"github.com/cucumber/godog"
 	"github.com/cucumber/messages-go/v10"
 	. "github.com/smartystreets/goconvey/convey"
-	"github.com/elmagician/godog"
 
 	"github.com/elmagician/kactus/internal/matchers"
 	"github.com/elmagician/kactus/internal/picker"

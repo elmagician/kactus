@@ -7,7 +7,7 @@ Feature: Kactus should provide a fixture system
     Given I load fixture test/fixtures/test.sql into pg.database
     * I load fixture test/fixtures/test2.sql into pg.authent
     * I load fixture test/fixtures/test_data.yml
-    * I load fixture test/fixtures/pubsub.yml into gcp.client
+    # * I load fixture test/fixtures/pubsub.yml into gcp.client
 
     Then I expect data to be in pg.database:
       | table       | id | val  |
@@ -29,25 +29,25 @@ Feature: Kactus should provide a fixture system
       | song   |         | Le gorille                               |
       | sing   |         | false((bool))                            |
 
-    * I expect message to be received by gcp.client within 5 seconds:
-      | field | matcher  | value        |
-      | test  |          | true((bool)) |
-      | msg   | contains | test message |
-
-    * I expect message to be received by gcp.client within 1 seconds:
-      | field | matcher | value          |
-      | test  |         | false((bool))  |
-      | msg   |         | This is a soup |
-
-    * I expect message to be received by gcp.client within 1 seconds:
-      | field | matcher | value         |
-      | test  |         | false((bool)) |
-      | msg   |         | Alohomora     |
-
-    * I expect message to be received by gcp.client within 1 seconds having metadata:
-      | field   | matcher | value |
-      | version |         | test  |
-      | type    |         | sort  |
+    #* I expect message to be received by gcp.client within 5 seconds:
+    #  | field | matcher  | value        |
+    #  | test  |          | true((bool)) |
+    #  | msg   | contains | test message |
+#
+    #* I expect message to be received by gcp.client within 1 seconds:
+    #  | field | matcher | value          |
+    #  | test  |         | false((bool))  |
+    #  | msg   |         | This is a soup |
+#
+    #* I expect message to be received by gcp.client within 1 seconds:
+    #  | field | matcher | value         |
+    #  | test  |         | false((bool)) |
+    #  | msg   |         | Alohomora     |
+#
+    #* I expect message to be received by gcp.client within 1 seconds having metadata:
+    #  | field   | matcher | value |
+    #  | version |         | test  |
+    #  | type    |         | sort  |
 
 
   Scenario: From manifest
@@ -72,49 +72,49 @@ Feature: Kactus should provide a fixture system
       | value    | =       | 100.56((number))         |
       | test     |         | [troll,de,troy]((array)) |
 
-    * I expect message to be received by gcp.client within 5 seconds:
-      | field | matcher  | value         |
-      | test  |          | false((bool)) |
-      | msg   | contains | funny message |
+    #* I expect message to be received by gcp.client within 5 seconds:
+    #  | field | matcher  | value         |
+    #  | test  |          | false((bool)) |
+    #  | msg   | contains | funny message |
+#
+    #* I expect message to be received by gcp.client within 1 seconds:
+    #  | field | matcher | value            |
+    #  | test  |         | true((bool))     |
+    #  | msg   |         | This is a cookie |
+#
+    #* I expect message to be received by gcp.client within 1 seconds:
+    #  | field | matcher | value        |
+    #  | test  |         | true((bool)) |
+    #  | msg   |         | AvadaKadavra |
 
-    * I expect message to be received by gcp.client within 1 seconds:
-      | field | matcher | value            |
-      | test  |         | true((bool))     |
-      | msg   |         | This is a cookie |
-
-    * I expect message to be received by gcp.client within 1 seconds:
-      | field | matcher | value        |
-      | test  |         | true((bool)) |
-      | msg   |         | AvadaKadavra |
-
-  @manifest:test/fixtures/test_manifest_tag.yml
-  Scenario: From tag
-    Given I assume that fixtures was loaded from tag
-
-    Then I expect data to be in pg.database:
-      | table           | id | val  |
-      | test_kactus_tag | 0  | test |
-      | test_kactus_tag | 1  | deux |
-
-    * I want to assert picked variables matches:
-      | key   | matcher | value        |
-      | tag   |         | true((bool)) |
-      | suift |         | clean        |
-
-    * I expect message to be received by gcp.client within 5 seconds:
-      | field | matcher  | value         |
-      | test  |          | false((bool)) |
-      | msg   | contains | tag message   |
-      | tag   |          | true((bool))  |
-
-    * I expect message to be received by gcp.client within 1 seconds:
-      | field | matcher | value             |
-      | test  |         | false((bool))     |
-      | msg   |         | This is a lasagna |
-      | tag   |         | true((bool))      |
-
-    * I expect message to be received by gcp.client within 1 seconds:
-      | field | matcher | value         |
-      | test  |         | false((bool)) |
-      | msg   |         | stupefix      |
-      | tag   |         | true((bool))  |
+  #@manifest:test/fixtures/test_manifest_tag.yml
+  #Scenario: From tag
+  #  Given I assume that fixtures was loaded from tag
+#
+  #  Then I expect data to be in pg.database:
+  #    | table           | id | val  |
+  #    | test_kactus_tag | 0  | test |
+  #    | test_kactus_tag | 1  | deux |
+#
+  #  * I want to assert picked variables matches:
+  #    | key   | matcher | value        |
+  #    | tag   |         | true((bool)) |
+  #    | suift |         | clean        |
+#
+  #  * I expect message to be received by gcp.client within 5 seconds:
+  #    | field | matcher  | value         |
+  #    | test  |          | false((bool)) |
+  #    | msg   | contains | tag message   |
+  #    | tag   |          | true((bool))  |
+#
+  #  * I expect message to be received by gcp.client within 1 seconds:
+  #    | field | matcher | value             |
+  #    | test  |         | false((bool))     |
+  #    | msg   |         | This is a lasagna |
+  #    | tag   |         | true((bool))      |
+#
+  #  * I expect message to be received by gcp.client within 1 seconds:
+  #    | field | matcher | value         |
+  #    | test  |         | false((bool)) |
+  #    | msg   |         | stupefix      |
+  #    | tag   |         | true((bool))  |

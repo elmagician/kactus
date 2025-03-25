@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  test_db:
+    image: postgres:alpine
+    env_file: .env
+    expose:
+      - 5432
+    ports:
+      - "5432:5432"

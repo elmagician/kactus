@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/elmagician/godog"
+	"github.com/cucumber/godog"
 	"golang.org/x/net/html"
 
 	"github.com/elmagician/kactus/internal/interfaces"

@@ -1,7 +1,7 @@
 package api
 
 import (
-	"github.com/elmagician/godog"
+	"github.com/cucumber/godog"
 )
 
 // SetRequestHeaders replaces current headers with list of provided ones.

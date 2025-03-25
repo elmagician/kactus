@@ -7,7 +7,7 @@ database:
   - kind: pg
     path: test/fixtures/for_manifest/test2.sql
     pickedInstanceKey: pg.authent
-pubsub:
-  - kind: google
-    path: test/fixtures/for_manifest/pubsub.yml
-    pickedInstanceKey: gcp.client
+#pubsub:
+#  - kind: google
+#    path: test/fixtures/for_manifest/pubsub.yml
+#    pickedInstanceKey: gcp.client

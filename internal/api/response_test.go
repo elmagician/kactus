@@ -5,11 +5,12 @@ import (
 	"testing"
 
 	fake "github.com/brianvoe/gofakeit/v5"
+	"github.com/cucumber/godog"
 	"github.com/cucumber/messages-go/v10"
-	"github.com/elmagician/godog"
+	. "github.com/smartystreets/goconvey/convey"
+
 	"github.com/elmagician/kactus/internal/api"
 	. "github.com/elmagician/kactus/internal/test"
-	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestUnit_NewResponse(t *testing.T) {

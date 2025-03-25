@@ -5,15 +5,16 @@ import (
 	"net/http"
 	"testing"
 
+	"github.com/cucumber/godog"
 	"github.com/cucumber/messages-go/v10"
-	"github.com/elmagician/godog"
+	. "github.com/smartystreets/goconvey/convey"
+
 	"github.com/elmagician/kactus/internal"
 	"github.com/elmagician/kactus/internal/api"
 	"github.com/elmagician/kactus/internal/interfaces"
 	"github.com/elmagician/kactus/internal/matchers"
 	. "github.com/elmagician/kactus/internal/test"
 	"github.com/elmagician/kactus/internal/types"
-	. "github.com/smartystreets/goconvey/convey"
 )
 
 func init() {

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/cucumber/godog"
 	. "github.com/smartystreets/goconvey/convey"
-	"github.com/elmagician/godog"
 	"go.uber.org/zap"
 
 	"github.com/elmagician/kactus/features/interfaces/picker"

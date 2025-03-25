@@ -1,8 +1,9 @@
 package definitions
 
 import (
-	"github.com/cucumber/messages-go/v10"
-	"github.com/elmagician/godog"
+	"context"
+
+	"github.com/cucumber/godog"
 
 	"github.com/elmagician/kactus/features/interfaces"
 	"github.com/elmagician/kactus/features/interfaces/api"
@@ -147,7 +148,8 @@ func InstallAPI(s *godog.ScenarioContext, client *api.Client) {
 	// Stop trace debug on client.
 	s.Step(`^stop trace client$`, client.DisableTrace)
 
-	s.BeforeScenario(func(_ *messages.Pickle) {
-		client.Reset() // error always nil
+	s.Before(func(ctx context.Context, sc *godog.Scenario) (context.Context, error) {
+		client.Reset()
+		return ctx, nil
 	})
 }
