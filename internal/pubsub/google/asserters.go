@@ -141,7 +141,7 @@ func (ps *Client) analyzeOnReception(data *godog.Table, within time.Duration, si
 			var i int
 			for i = startAt; i < to; i++ {
 				err := singleAsserter(i, data)
-				if err != nil && !errors.Is(err, ErrNoMatch) && !errors.Is(err, match.ErrUnmatched) {
+				if err != nil && !errors.Is(ErrNoMatch, err) && !errors.Is(err, match.ErrUnmatched) {
 					return 0, err
 				}
 

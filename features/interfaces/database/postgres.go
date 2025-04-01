@@ -85,7 +85,7 @@ func (pg *Postgres) AssertData(instance string, data *godog.Table) error {
 // known db instance using provided where clauses.
 func (pg *Postgres) AssertDataDoesNotExists(instance string, data *godog.Table) error {
 	err := pg.AssertData(instance, data)
-	if errors.Is(err, postgres.ErrUnmatched) {
+	if errors.Is(postgres.ErrUnmatched, err) {
 		return nil
 	}
 

@@ -74,7 +74,7 @@ func Equal(actual interface{}, expected string) (bool, error) {
 	if err != nil {
 		log.Error("could not assert equality:", zap.Error(err))
 
-		if errors.Is(err, types.ErrUnsupportedType) || errors.Is(err, types.ErrUnmatchedType) {
+		if errors.Is(types.ErrUnsupportedType, err) || errors.Is(err, types.ErrUnmatchedType) {
 			return false, err
 		}
 

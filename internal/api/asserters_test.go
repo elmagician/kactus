@@ -138,7 +138,7 @@ func TestUnit_Response_JSONContains(t *testing.T) {
 				},
 			}
 
-			So(errors.Is(r.JSONContains(true, partialDataTable), api.ErrNotFullyMatch), ShouldBeTrue)
+			So(errors.Is(api.ErrNotFullyMatch, r.JSONContains(true, partialDataTable)), ShouldBeTrue)
 		})
 	})
 }

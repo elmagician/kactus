@@ -33,7 +33,7 @@ func (m Manifest) Load(cli *Client) error {
 
 		go func() {
 			err := cli.ReceiveOn(locSub, m.AutoAcknowledge)
-			if err != nil && !errors.Is(err, context.Canceled) {
+			if err != nil && !errors.Is(context.Canceled, err) {
 				log.Error("error while receiving", zap.Error(err))
 			}
 		}()
